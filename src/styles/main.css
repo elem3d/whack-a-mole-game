@@ -29,3 +29,8 @@
     border: 1px solid #7c3f06;
     background-color: #eec043;
 }
+
+.enemy {
+    background-image: url("../img/mole2.png");
+    background-size: cover;
+}
