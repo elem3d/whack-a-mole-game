@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    height: 90px;
+    width: 100%;
+    background-color: #000;
+    color: #ffff;
+}
+
+.panel {
+    margin-top: 1rem;
+    border: red solid 1px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.square {
+    height: 150px;
+    width: 150px;
+    border: 1px solid #7c3f06;
+    background-color: #eec043;
+}
