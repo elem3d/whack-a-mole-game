@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    background-image: url("../img/blue.jpg");
+    background-size: cover;
+    background-blend-mode: lighten;
 }
 
 .menu {
@@ -9,28 +12,49 @@
     justify-content: space-evenly;
     align-items: center;
 
-    height: 90px;
+    height: 100px;
     width: 100%;
     background-color: #000;
     color: #ffff;
 }
 
 .panel {
-    margin-top: 1rem;
-    border: red solid 1px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     display: flex;
     justify-content: center;
 
 }
 
 .square {
-    height: 150px;
-    width: 150px;
-    border: 1px solid #7c3f06;
-    background-color: #eec043;
+    height: 200px;
+    width: 200px;
+    background-image: url("../img/Cartoon_green_texture_grass.jpg");
+    background-size: cover;
 }
 
 .enemy {
+    height: 200px;
+    width: 200px;
+    border: 5px solid #7c3f06;
+    background-color: #eec043;
     background-image: url("../img/mole2.png");
     background-size: cover;
+}
+
+.menu-lives {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-lives, img {
+    margin-right: 10px;
+}
+
+.menu-time, h2:nth-child(2) {
+    margin-top: 15px;
+}
+.menu-score, h2:nth-child(2) {
+    margin-top: 15px;
 }
