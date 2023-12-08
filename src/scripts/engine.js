@@ -4,7 +4,8 @@ const state = {
         timeLeft: document.querySelector("#time"),
         score: document.querySelector("#score"),
         squares: document.querySelectorAll(".square"),
-        level: document.querySelector('#level')
+        level: document.querySelector('#level'),
+        lifeCounter: document.querySelector('#life')
     },
     value: {
         gameVelocity: 1000,
@@ -13,6 +14,7 @@ const state = {
         currentTime: 60,
         level: 0,
         error: 0,
+        life: 3,
     },
 
     actions: {
@@ -105,14 +107,32 @@ function levelUp(score){
     state.view.level.textContent = state.value.level;
 }
 
-function lifeCount(error) {
+function lifeCount() {
+    if(state.value.error === 5) {
+        state.value.life--
+        state.view.lifeCounter.textContent = state.value.life
+        state.value.error = 0
+    }
+}
+
+function death(){
+    if(state.value.life === 0) {
+        playLost('gameOver');
+        alert('GAME OVER! Score: ' + state.value.result)
+        clearInterval(state.actions.countDownTimerId);
+        clearInterval(state.actions.timerId);
+    }
 
 }
 
 function init() {
     addListnerHitBox();
     moveEnemy();
-    levelUp(state.value.result);
+    
 }
 
 init();
+
+
+
+
