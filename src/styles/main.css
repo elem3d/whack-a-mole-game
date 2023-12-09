@@ -1,3 +1,7 @@
+body {
+    cursor: url('../img/hammer.png'), auto;
+  }
+
 .container{
     display: flex;
     flex-direction: column;
@@ -42,6 +46,15 @@
     background-size: cover;
 }
 
+.enemy-hit {
+    height: 200px;
+    width: 200px;
+    border: 5px solid #085c05;
+    background-color: #eec043;
+    background-image: url("../img/mole1.png");
+    background-size: cover;
+}
+
 .menu-lives {
     display: flex;
     align-items: center;
@@ -52,9 +65,7 @@
     margin-right: 10px;
 }
 
-.menu-time, h2:nth-child(2) {
+.sub-menu, h2:nth-child(2) {
     margin-top: 15px;
 }
-.menu-score, h2:nth-child(2) {
-    margin-top: 15px;
-}
+

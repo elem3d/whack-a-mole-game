@@ -5,16 +5,18 @@ const state = {
         score: document.querySelector("#score"),
         squares: document.querySelectorAll(".square"),
         level: document.querySelector('#level'),
-        lifeCounter: document.querySelector('#life')
+        lifeCounter: document.querySelector('#life'),
+        missed: document.querySelector('#missed'),
     },
     value: {
         gameVelocity: 1000,
         hitPosition: 0, 
         result: 0,
-        currentTime: 60,
-        level: 0,
-        life: 3,
+        currentTime: 120,
+        level: 1,
+        life: 5,
         error: 0,
+        missed: 0,
     },
 
     actions: {
@@ -23,19 +25,19 @@ const state = {
         levelUpId: setInterval(levelUp, 100),
         errorId: setInterval(lifeCount, 100),
         lifeId: setInterval(death, 100),
-        enemyId: setInterval(moveEnemy, 100),
     }
 }
 
 function randomSquare() {
     state.view.squares.forEach((square) => {
-        square.classList.remove("enemy");
+        square.classList.remove('enemy');
+        square.classList.remove('enemy-hit')
     });
 
     let randomNumber = Math.floor(Math.random() * 9);
     let randomSquare = state.view.squares[randomNumber];
 
-    randomSquare.classList.add("enemy");
+    randomSquare.classList.add('enemy');
     state.value.hitPosition = randomSquare.id
 }
 
@@ -74,20 +76,18 @@ function countDown(){
 function addListnerHitBox() {
     state.view.squares.forEach((square) => {
         square.addEventListener('mousedown', () => { 
-            if(square.id === state.value.hitPosition && state.value.result <= 30){
+            if(square.id === state.value.hitPosition){
+                playSound3('hit')
+                square.classList.remove('enemy')
+                square.classList.add('enemy-hit');
                 state.value.result++;
                 state.view.score.textContent = state.value.result;
                 state.value.hitPosition = null;
-                playSound3('hit');
-            
-            } else if(square.id === state.value.hitPosition && state.value.result > 30){
-                state.value.result = state.value.result + 3;
-                state.view.score.textContent = state.value.result;
-                state.value.hitPosition = null;
-                playSound3('hit');
             
             } else {
-                state.value.error++
+                state.value.error++;
+                state.value.missed++;
+                state.view.missed.textContent = state.value.missed;
                 playSound1('chipmunk');
             }
         })
@@ -95,46 +95,47 @@ function addListnerHitBox() {
 }
 
 function levelUp(){
-    state.value.gameVelocity = 1000;
-
     if(state.value.result === 10) {
         playSound1('levelUp')
         alert('LEVEL UP!');
         state.value.level++;
         state.value.result++;
-    }else if (state.value.result === 20) {
+        clearInterval(state.value.timerId);
+        state.value.timerId = setInterval(randomSquare, 800);
+    }else if (state.value.result === 30) {
         playSound1('levelUp')
         alert('LEVEL UP!')
         state.value.level++;
         state.value.result++;
-    } else if (state.value.result === 30) {
+        clearInterval(state.value.timerId);
+        state.value.timerId = setInterval(randomSquare, 700);
+    } else if (state.value.result === 50) {
         playSound1('levelUp')
-        alert('LEVEL UP MAX!')
+        alert('LEVEL UP!')
         state.value.level++;
         state.value.result++;
+        clearInterval(state.value.timerId);
+        state.value.timerId = setInterval(randomSquare, 500);
+    } else if (state.value.result === 60) {
+        playSound1('levelUp')
+        alert('INSANE LEVEL!')
+        state.value.level++;
+        state.value.result++;
+        clearInterval(state.value.timerId);
+        state.value.timerId = setInterval(randomSquare, 400);
     }
 
     state.view.level.textContent = state.value.level;
+    state.view.score.textContent = state.value.result;
 }
 
 function moveEnemy() {
-    if(state.value.level === 0) {
-        state.value.timerId = setInterval(randomSquare, state.value.gameVelocity);
-    } else if(state.value.level === 1) {
-        state.value.timerId = setInterval(randomSquare, (state.value.gameVelocity - 200));
-    } else if(state.value.level === 2) {
-        state.value.timerId = setInterval(randomSquare, (state.value.gameVelocity - 300));
-    } else {
-        state.value.timerId = setInterval(randomSquare, (state.value.gameVelocity - 500));
-    }
+    state.value.timerId = setInterval(randomSquare, state.value.gameVelocity)
 }
 
 function lifeCount() {
-    if(level <= 2 && state.value.error === 5) {
-        state.value.life--;
-        state.view.lifeCounter.textContent = state.value.life;
-        state.value.error = 0;
-    } else if(level === 3 && state.value.error === 7) {
+    
+    if(state.value.error === 3) {
         state.value.life--;
         state.view.lifeCounter.textContent = state.value.life;
         state.value.error = 0;
@@ -150,14 +151,13 @@ function death(){
         clearInterval(state.actions.levelUpId);
         clearInterval(state.actions.errorId);
         clearInterval(state.actions.enemyId);
-        state.value.level = state.value.level -state.value.level;
-        state.value.result = state.value.result - state.value.result;
     }
 
 }
 
 function init() {
     addListnerHitBox();
+    moveEnemy();
 }
 
 init();
