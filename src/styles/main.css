@@ -1,7 +1,7 @@
 body {
-    cursor: url('../img/hammer.png'), auto;
-  }
-
+    background: none;
+    cursor: none;
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -67,5 +67,13 @@ body {
 
 .sub-menu, h2:nth-child(2) {
     margin-top: 15px;
+}
+
+#custom-cursor {
+    background-color: #ffffff00;
+    background-image: url(../img/hammer.png);
+    height: 100px;
+    width: 100px;
+    background-size: cover;
 }
 

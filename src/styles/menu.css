@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-image: url("../img/blue.jpg");
+    background-size: cover;
+    background-blend-mode: lighten;
+}
+
+.title {
+    margin: 5rem;
+    display: flex;
+    color: #402201;
+    border: 10px;
+    border-style: inset;
+    border-color: #1681e1;
+    padding: 1rem;
+    background-color: #ffd100;
+}
+
+.content {
+    margin-inline: 7rem;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.text-title {
+    margin: auto;
+}
+
+h4.text {
+    margin-inline: 4rem;
+    padding: 1rem;
+    border: 10px;
+    border-style: inset;
+    border-color: #1681e1;
+    color: #402201;
+    text-align: center;
+}
