@@ -11,8 +11,8 @@ body {
     margin: 5rem;
     display: flex;
     color: #402201;
-    border: 10px;
-    border-style: inset;
+    border: 20px;
+    border-style: ridge;
     border-color: #1681e1;
     padding: 1rem;
     background-color: #ffd100;
@@ -30,14 +30,40 @@ body {
 
 .text-title {
     margin: auto;
+    padding: 1rem;
+    border: 10px;
+    border-style: outset;
+    border-color: #FFEB3B;
 }
 
 h4.text {
     margin-inline: 4rem;
-    padding: 1rem;
+    padding: 0.5rem;
     border: 10px;
-    border-style: inset;
-    border-color: #1681e1;
+    border-radius: 15%;
+    border-style: dotted;
+    border-color: #FFEB3B;
     color: #402201;
     text-align: center;
+    background-color: beige;
+}
+
+.button-emoji {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+button.button {
+    margin: 1rem;
+    margin-right: 10rem;
+    border: 5px;
+    border-style: outset;
+    border-color: gainsboro;
+    padding: 1rem;
+    color: #402201;
+    background-color: snow;
 }
