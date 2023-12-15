@@ -66,4 +66,5 @@ button.button {
     padding: 1rem;
     color: #402201;
     background-color: snow;
+    cursor: pointer;
 }
