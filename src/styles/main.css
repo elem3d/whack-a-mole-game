@@ -69,11 +69,13 @@ body {
     margin-top: 15px;
 }
 
-#custom-cursor {
+.custom-cursor {
+    position: absolute;
     background-color: #ffffff00;
-    background-image: url(../img/hammer.png);
+    background-image: url(../img/hammer1.png);
     height: 100px;
     width: 100px;
     background-size: cover;
+    pointer-events: none;
 }
 

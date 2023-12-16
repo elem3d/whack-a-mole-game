@@ -1,13 +1,8 @@
-const cursor1 = document.querySelector('#custom-cursor');
+const cursor = document.querySelector('.custom-cursor');
 
-const moveCursor = (e)=> {
-    const mouseY = e.clientY;
-    const mouseX = e.clientX;
-     
-    cursor1.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-  }
-  
-  window.addEventListener('mousemove', moveCursor)
+document.addEventListener('mousemove', e => {
+    cursor.setAttribute("style", "top: " + (e.pageY - 40) + "px; left: " + (e.pageX - 20) + "px;")
+})
 
 
 const state = {
@@ -109,28 +104,28 @@ function addListnerHitBox() {
 function levelUp(){
     if(state.value.result === 10) {
         playSound1('levelUp')
-        alert('LEVEL UP!');
+        alert('LEVEL UP! A velocidade aumentou');
         state.value.level++;
         state.value.result++;
         clearInterval(state.value.timerId);
         state.value.timerId = setInterval(randomSquare, 800);
     }else if (state.value.result === 30) {
         playSound1('levelUp')
-        alert('LEVEL UP!')
+        alert('LEVEL UP! A velocidade aumentou')
         state.value.level++;
         state.value.result++;
         clearInterval(state.value.timerId);
         state.value.timerId = setInterval(randomSquare, 700);
     } else if (state.value.result === 50) {
         playSound1('levelUp')
-        alert('LEVEL UP!')
+        alert('LEVEL UP! A velocidade aumentou ')
         state.value.level++;
         state.value.result++;
         clearInterval(state.value.timerId);
         state.value.timerId = setInterval(randomSquare, 500);
     } else if (state.value.result === 60) {
         playSound1('levelUp')
-        alert('INSANE LEVEL!')
+        alert('INSANE LEVEL! Parabéns por chegar até aqui, boa sorte com o nível nsano de velocidade')
         state.value.level++;
         state.value.result++;
         clearInterval(state.value.timerId);
@@ -168,6 +163,7 @@ function death(){
 }
 
 function init() {
+    alert('Para jogar, bata na cabeça das doninhas que querem destruir o seu gramado')
     addListnerHitBox();
     moveEnemy();
 }
