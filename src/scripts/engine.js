@@ -66,9 +66,9 @@ function countDown(){
     if(state.value.currentTime <= 0) {
         playSound1('gameOver');
         if (state.value.result < 25){
-            alert('TIME OUT! Your Score: ' + state.value.result);
+            alert('TIME OUT! Your Score: ' + state.value.result + '   Volte ou recarregue a página e clique ok para tentar de novo. :)');
         } else {
-            alert('TIME OUT! Your Score: ' + state.value.result + ' CONGRATULATIONS!');
+            alert('TIME OUT! Your Score: ' + state.value.result + ' PARABÉNS!' + '   Volte ou recarregue a página e clique ok para tentar de novo. :)');
         }
         clearInterval(state.actions.countDownTimerId);
         clearInterval(state.actions.timerId);
@@ -152,7 +152,7 @@ function lifeCount() {
 function death(){
     if(state.value.life === 0) {
         playSound1('gameOver');
-        alert('GAME OVER! Score: ' + state.value.result);
+        alert('GAME OVER! Score: ' + state.value.result + '   Volte ou recarregue a página e clique ok para tentar de novo. ;)');
         clearInterval(state.actions.countDownTimerId);
         clearInterval(state.actions.timerId);
         clearInterval(state.actions.levelUpId);
